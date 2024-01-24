@@ -1,0 +1,56 @@
+body {
+  padding: 10px;
+}
+
+img {
+  max-height: 500px;
+  max-width: 300px;
+}
+
+ul {
+  list-style: none;
+}
+
+.container_item {
+  padding: 1px;
+  /* border: 3px black solid; */
+  display: inline-block;
+  margin: 2rem 0;
+  height: auto;
+  overflow: hidden;
+}
+
+.container_item .grid-items {
+  display: grid;
+  border: 3px black solid;
+  grid-template-columns: 1fr 2fr;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+}
+
+.comment {
+  border: 3px black solid;
+  border-radius: 10px;
+  margin: 0.2rem 0;
+  text-align: center;
+  padding: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.lead {
+  font-weight: bold;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+}

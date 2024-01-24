@@ -1,0 +1,23 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+ <div class="text-center">
+  <h1 class="title">Watched</h1>
+  {% for item in favourites %}
+    <div class="container_item">
+      <div class="grid-items">
+          <img src="{{ item.listing.image.url }}" alt="{{ item.listing.image.url }}">
+          <div>
+              <h2><a href="{% url 'item' item.listing.id %}">{{ item.listing.item }}</a></h2>
+              <h3>Price: ${{ item.listing.price }}</h3>
+              <h3>Description: {{ item.listing.description }}</h3>
+              <h3>Category: {{ item.listing.category.category }}</h3>
+          </div>
+        </div>
+    </div>
+    {% empty %}
+    <p style = "list-style:none;">Empty</p>
+  {% endfor %}    
+</div>
+
+{% endblock %}

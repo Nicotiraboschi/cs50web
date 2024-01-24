@@ -1,0 +1,17 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    {% if message %}
+      <p class="error">{{message}}</p>
+    {% endif %}
+  <form action="{% url 'create' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" name="item" placeholder="New Item" required>
+    <input type="text" name="category" placeholder="Category" required>
+    <input type="number" step="0.1" name="price" placeholder="Price" step="any" required>
+    <input type="text" name="description" placeholder="Description" required>
+    <input type="file" name="image">
+    <input type="submit" value="Create">
+  </form>
+
+{% endblock %}

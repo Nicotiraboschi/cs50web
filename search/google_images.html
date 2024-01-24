@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Search</title>
+    <style>
+      body {
+        height: 100vh;
+        background: #222;
+        color: white;
+      }
+      a {
+        color: white;
+        text-decoration: none;
+      }
+      nav {
+        text-align: right;
+      }
+      h1 {
+        font-size: 4rem;
+      }
+      .text-center {
+        text-align: center;
+      }
+      form {
+        text-align: center;
+      }
+      .images {
+        font-size: small;
+        color: blue;
+      }
+
+      input[type='text'] {
+        border-radius: 10px;
+        background-color: #222;
+        color: white;
+        padding: 0.4rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">Google Search</a>
+      <a href="advanced_search.html">Advanced Search</a>
+    </nav>
+    <div class="container">
+      <h1 class="text-center bold">
+        GOOGLE <span class="images">IMAGES</span>
+      </h1>
+      <form action="https://www.google.com/search">
+        <input type="hidden" name="tbm" value="isch" />
+        <input type="text" name="q" />
+        <input type="submit" value="Google Image Search" />
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div class="text-center">
+  {% if item.winner %}
+    <h2>Auction closed!{% endif %} {% if item.winner == user.username %} <span>You won!</span></h2>
+  {% endif %}
+  
+    <h1 class="lead title">Listing: {{ item.item }}</h1>
+    <form action="{% url 'item' item_id=item.id %}" method="POST">
+      {% csrf_token %}
+      {% if not watched %}
+      <input type="submit" name="submit" value="Add to Watchlist 🙉">
+      {% else %}
+      <input type="submit" name="submit" value="Remove from Watchlist 🙈">
+      {% endif %}
+    </form>
+  
+    <div class="container_item">
+      <div class="grid-items">
+        <img src="{{item.image.url}}" alt="{{ item.image.url }}">
+        <div>
+          <h2>Description:</h2>
+          <p>{{item.description}}</p>
+          <h2>Details</h2>
+            <p>Listed by: {{item.poster}}🎅</p>
+            <p>Category: {{item.category.category}}⭐</p>
+        </div>
+      </div>
+    </div>
+
+      <h2>${{item.price}}</h2>
+      {% if item.poster == user.username and not item.winner%}
+        <form action="{% url 'item' item_id=item.id %}" method="post">
+          {% csrf_token %}
+          <input type="submit" name="submit" value="Close auction">
+        </form>
+        <br>
+      {% elif item.winner %}
+        <p>Winner: {{item.winner}}</p>
+      {% else %}
+        <h2>Bids:</h2>
+        <p>{{bids}} bid(s) so far. Your bid {% if my_bid == item.price %} is {% else %} isn't{% endif %} the current one. {% if my_bid != item.price %} (Your bid is ${{my_bid}}) {% endif %} </p>
+      <form action="{% url 'item' item_id=item.id %}" method="post">
+        {% csrf_token %}
+        <input type="number" step="0.1" name="amount" placeholder:"Bid" required>
+        <input type="submit" name="submit" value="Place">
+      </form>
+      {% endif %}
+    
+    {% if message %}
+      <p class="error">{{ message }}</p>
+    {% endif %}
+    <div class="comments_container">
+      <h2>
+        Comments
+      </h2>
+      {% for comment in comments %}
+      <div class="comment">
+        <p>{{comment.comment}}</p>
+        <p>By: {{comment.commenter.username}}</p>
+      </div>
+        {% empty %}
+        <p>No comment</p>
+      {% endfor %}
+      <h2>
+        Post a comment
+      </h2>
+      <form action="{% url 'item' item_id=item.id %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="comment" required>
+        <input type="submit" name="submit" value="Post">
+        {% if message_comment %}
+          <p class="error">{{message_comment}}</p>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+{% endblock %}

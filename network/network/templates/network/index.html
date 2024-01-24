@@ -1,0 +1,26 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div id="posts-view" class="post-page">
+        <h3 id="posts-title"></h3>
+        <div id="posts-list">
+
+        </div>
+    </div>
+
+    <div id="write-view" class="post-page">
+        <h3>New Post</h3>
+        <form id="post-form">
+            {% csrf_token %}
+            <input id="text-form" type="text">
+            <input id="submit-post" class="btn btn-sm btn-outline-primary" type="submit" value="Post">
+        </form>
+    </div>
+
+    
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'network/network.js' %}"></script>
+{% endblock %}

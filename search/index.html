@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Search</title>
+    <style>
+      body {
+        height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      nav {
+        text-align: right;
+      }
+      .container {
+        height: 100%;
+        text-align: center;
+        margin: auto;
+      }
+      h1 {
+        font-size: 3rem;
+      }
+      input[type='text'] {
+        border-radius: 10px;
+        margin-bottom: 1rem;
+      }
+      .blue {
+        color: blue;
+      }
+      .red {
+        color: red;
+      }
+      .yellow {
+        color: yellow;
+      }
+      .green {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="google_images.html">Google Images</a>
+      <a href="advanced_search.html">Advanced Search</a>
+    </nav>
+    <div class="container">
+      <h1>
+        <span class="blue">G</span>
+        <span class="red">o</span>
+        <span class="yellow">o</span>
+        <span class="blue">g</span>
+        <span class="green">l</span>
+        <span class="red">e</span>
+      </h1>
+      <form action="https://google.com/search">
+        <input type="text" name="q" />
+        <br />
+        <input type="submit" value="Google Search" />
+        <button type="submit" name="btnI" value="1">I'm Feeling Lucky</button>
+      </form>
+    </div>
+  </body>
+</html>
